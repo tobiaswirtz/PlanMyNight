@@ -3,6 +3,20 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<link rel="stylesheet" type="text/css" href="font.css">
 
+<script>
+
+	function startQuiz(elementID) {
+
+		document.getElementById(elementID).innerHTML = "";
+
+	}
+
+
+
+
+</script>
+
+
 </head>
 
 <title> PlanMyNight </title>
@@ -10,30 +24,24 @@
 <body>
 
 
-<div id = "logo">
-	<font size = "12"><p class="fontSansation">PlanMyNight</p></font size>
+<div id = "logoCanvas">
+	<div id = "logo">
+			<a href="index.html"><img src="LOGORED.png"></a>
+	</div>
+	<font size = "12"><p class="Walkway_SemiBold">PlanMyNight</p></font size>
 </div>
 
 <div id = "content">
-	<p class="fontSansation"> <font size="3.5">Make this day the day of your life. <br> Embark on your journey. <br> It's all just one click away. <br></font size></p>
+	<p class="Walkway_SemiBold"> <font size="4">Make this day the day of your life. <br> Embark on your journey. <br> It's all just one click away. <br></font size></p>
 
 <br>
 <br>
 
-<center><a href="#" class="button" onclick="onClick()"><p class="fontSansation">Click me</p></a></center>
+<center><a href="#" class="button" onclick="startQuiz('content')"><p class="Walkway_SemiBold">Click me</p></a></center>
 
-<script>
-
-	function onClick() {
-
-		window.open('http://www.google.com');
-
-	}
-
-</script>
 </div>
 <div id="footer">
-	<center><p class="fontSansation">Copyright MopTop Labs, 2014</p></center>
+	<center><p class="Walkway_SemiBold">Copyright MopTop Labs, 2014</p></center>
 </div>	
 
 </body>

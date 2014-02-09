@@ -5,7 +5,7 @@ body {
 	margin: 0;
 }
 
-#logo {
+#logoCanvas {
 
 	position: static;
 	text-align: center;
@@ -18,6 +18,12 @@ body {
 
 }
 
+#logo {
+
+	position: absolute;
+	top: 24px;
+	left: 45px;
+}
 
 #content {
 
@@ -74,7 +80,7 @@ body {
 	font-weight:normal;
 	font-style:normal;
 	height:50px;
-	line-height:5px;
+	line-height:0px;
 	width:131px;
 	text-decoration:none;
 	text-align:center;
