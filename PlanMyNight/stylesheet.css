@@ -1,29 +1,43 @@
 body {
 
-	background-color: red;
+	background-color: #F5F5F5;
 	opacity: 20%;
+	margin: 0;
 }
 
 #logo {
 
-	width: 14em;
-	margin-top: 8%;
-	margin-left: auto;
-	margin-right: auto;
-	border-style: outset;
-	border-width: .5em;
+	position: relative;
 	text-align: center;
-	color: blue;
+	color: white;
+	background-color: #33b5e5;
+	width: 100%; 
+	overflow-x: hidden;
+	height: 8em;
 
 }
 
 #header {
 
-	width: 14em;
-	margin-top: 2em;
+	width: 15em;
+	margin-top: 10em;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	font-family: WebsiteFont;
+	line-height: 130%;
+}
+
+#footer {
+
+	position: fixed;
+	width: 100%;
+	color: white;
+	background-color: #33b5e5;
+	overflow-x:hidden;
+	height: 3.5em;
+	bottom: 0;
+
 
 }
 
@@ -55,8 +69,8 @@ body {
 	font-size:25px;
 	font-weight:normal;
 	font-style:normal;
-	height:65px;
-	line-height:65px;
+	height:50px;
+	line-height:5px;
 	width:131px;
 	text-decoration:none;
 	text-align:center;
