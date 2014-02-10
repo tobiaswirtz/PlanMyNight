@@ -3,16 +3,20 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<link rel="stylesheet" type="text/css" href="font.css">
 
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=432114100254749"></script>
 <script>
 
 	function startQuiz(elementID) {
 
-		document.getElementById(elementID).innerHTML = "";
+
+		if (response.status === 'connected') {
+		document.getElementById(elementID).innerHTML = ""; 
+		//add Quiz here
+		} else {
+			window.alert("Make sure you are logged into Facebook!");
+		}
 
 	}
-
-
-
 
 </script>
 
@@ -23,15 +27,28 @@
 
 <body>
 
+<div id="fb-root"></div>
+<script> //Facebook login process
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=432114100254749";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 <div id = "logoCanvas">
 	<div id = "logo">
 			<a href="index.html"><img src="LOGORED.png"></a>
 	</div>
 	<font size = "12"><p class="Walkway_SemiBold">PlanMyNight</p></font size>
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
 </div>
 
 <div id = "content">
+
 	<p class="Walkway_SemiBold"> <font size="4">Make this day the day of your life. <br> Embark on your journey. <br> It's all just one click away. <br></font size></p>
 
 <br>

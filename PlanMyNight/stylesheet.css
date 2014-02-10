@@ -5,6 +5,18 @@ body {
 	margin: 0;
 }
 
+#fb-root {
+
+
+}
+
+.fb-login-button {
+
+	position: absolute;
+	top:24px;
+	left: 600px;
+}
+
 #logoCanvas {
 
 	position: static;
