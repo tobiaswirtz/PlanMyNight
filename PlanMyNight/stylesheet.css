@@ -5,19 +5,19 @@ body {
 	margin: 0;
 }
 
-#fb-root {
+#fb-root {  /* base fb login div*/
 
 
 }
 
-.fb-login-button {
+.fb-login-button {	/*div that synthesizes login button*/
 
 	position: absolute;
 	top:24px;
 	left: 600px;
 }
 
-#logoCanvas {
+#logoCanvas {	/*div that is responsible for the red, browser-wide bar at the top of the page*/
 
 	position: static;
 	text-align: center;
@@ -30,14 +30,14 @@ body {
 
 }
 
-#logo {
+#logo {		/* PlanMyNight Logo div*/
 
 	position: absolute;
 	top: 24px;
 	left: 45px;
 }
 
-#content {
+#content {	/*anything between the two red bars div*/
 
 	width: 100%;
 	margin-left: auto;
@@ -49,7 +49,7 @@ body {
 
 }
 
-#footer {
+#footer {		/*lower red bar div*/
 
 	position: fixed;
 	width: 100%;
@@ -63,7 +63,7 @@ body {
 
 }
 
-.button {
+.button {		/*button property div class*/
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -98,7 +98,7 @@ body {
 	text-align:center;
 	text-shadow:1px 1px 0px #ffffff;
 }
-.button:hover {
+.button:hover { /*creates the hover-effect*/
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
 	background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
