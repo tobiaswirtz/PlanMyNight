@@ -1,0 +1,46 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="font.css">
+
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=432114100254749"></script>
+
+
+</head>
+
+<title> PlanMyNight </title>
+
+<body>
+
+<div id="fb-root"></div>
+<script> //Facebook login process
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=432114100254749";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div id = "logoCanvas">  <!--Top Red Bar Div-->
+	<div id = "logo">	<!--Logo div-->
+			<a href="index.html"><img src="LOGORED.png"></a>
+	</div>
+	<font size = "12"><p class="Walkway_SemiBold">PlanMyNight</p></font size>
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div> <!--Synthesizing facebook login div-->
+</div>
+
+<div id = "content">	<!--"Real Body" div-->
+
+	<p class="Walkway_SemiBold"> <font size="4">Lorem ipsum dolorem... <br></font size></p>
+
+</div>
+<div id="footer">
+	<center><p class="Walkway_SemiBold">Copyright MopTop Labs, 2014</p></center>
+</div>	
+
+</body>
+
+</html>
