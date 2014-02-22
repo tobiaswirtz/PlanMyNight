@@ -52,6 +52,8 @@
 
 <script>
 
+	var userPersonality = [];
+	
 	var cholericAnswers = 0;
 	var melancholicAnswers = 0;
 	var phlegmaticAnswers = 0;
@@ -88,8 +90,9 @@
 			document.getElementById('sanguineLabel').innerHTML = " " + sanguine_item;
 		}
 		else{
-			//calculate ratio and go to next part of quiz
-			document.write("User is " + (cholericAnswers*100/6) + " % choleric, " + (melancholicAnswers*100/6) + "% melancholic, " + (phlegmaticAnswers*100/6) + "% phlegmatic, " + (sanguineAnswers*100/6) + "% sanguine.");
+			//calculate ratio, save userPersonality to mySQL, and go to next part of quiz
+			userPersonality = [(cholericAnswers/5), (melancholicAnswers/5), (phlegmaticAnswers/5), (sanguineAnswers/5)];
+			document.write(userPersonality);
 		}
 		
 	}
