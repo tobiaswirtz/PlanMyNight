@@ -10,8 +10,9 @@
 
 
 		if (response.status === 'connected') {
-		document.getElementById(elementID).innerHTML = ""; 
-		//add Quiz here
+		document.getElementById('content').innerHTML = ""; 
+		
+		document.getElementById('content') = "Test";
 		} else {
 			window.alert("Make sure you are logged into Facebook!");
 		}
@@ -54,7 +55,7 @@
 <br>
 <br>
 
-<center><a href="#" class="button" onclick="startQuiz('content')"><p class="Walkway_SemiBold">Click me</p></a></center>
+<center><a href="#" class="button"><p class="Walkway_SemiBold">Click me</p></a></center>
 
 </div>
 <div id="footer">
