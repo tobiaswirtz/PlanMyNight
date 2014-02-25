@@ -22,8 +22,6 @@ body {
 
 	position: static;
 	text-align: center;
-	color: white;
-	background-color: #FF3030;
 	width: 100%; 
 	overflow-x: hidden;
 	overflow-y:hidden;
@@ -34,8 +32,31 @@ body {
 #logo {		/* PlanMyNight Logo div*/
 
 	position: absolute;
-	top:-7.5px;
+	top:10px;
 	left:45px;
+}
+
+#logo:hover {
+
+	-webkit-transform: scale(1.05);
+  	-moz-transform: scale(1.05);
+  	-o-transform: scale(1.05);
+  	transform: scale(1.05);
+  	transition: all 0.3s;
+  	-webkit-transition: all 0.3s;
+}
+
+#separator {
+
+	margin-top: 10px;
+	position: static;
+	text-align: center;
+	width: 100%; 
+	overflow-x: hidden;
+	overflow-y:hidden;
+	height: 3px;
+	background-color: #FF3030;
+
 }
 
 #content {	/*anything between the two red bars div*/
@@ -43,10 +64,11 @@ body {
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 10em;
+	margin-top: 14em;
 	text-align: center;
 	font-family: WebsiteFont;
 	line-height: 130%;
+	z-index: -1;
 
 }
 
