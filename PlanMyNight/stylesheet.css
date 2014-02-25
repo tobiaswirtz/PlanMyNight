@@ -10,9 +10,10 @@ body {
 
 }
 
-.fb-login-button {	/*div that synthesizes login button*/
+.fb-login-button {	/*div-class that synthesizes login button*/
 
 	position: absolute;
+	
 	top:24px;
 	left: 600px;
 }
@@ -26,15 +27,15 @@ body {
 	width: 100%; 
 	overflow-x: hidden;
 	overflow-y:hidden;
-	height: 8em;
+	height: 4.5em;
 
 }
 
 #logo {		/* PlanMyNight Logo div*/
 
 	position: absolute;
-	top: 24px;
-	left: 45px;
+	top:-7.5px;
+	left:45px;
 }
 
 #content {	/*anything between the two red bars div*/
@@ -111,4 +112,30 @@ body {
 }.button:active {
 	position:relative;
 	top:1px;
+}
 
+.social-slide {
+	height: 48px;
+	width: 48px;
+	margin: 10px;
+	float:right;
+	-webkit-transition: all ease 0.3s;
+	-moz-transition: all ease 0.3s;
+	-o-transition: all ease 0.3s;
+	-ms-transition: all ease 0.3s;
+	transition: all ease 0.3s;
+}
+.social-slide:hover {
+	background-position: 0px -48px;
+	box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.8);
+}
+
+.twitter-hover {
+    background-image: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/twitter-hover.png');
+}
+.facebook-hover {
+    background-image: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/facebook-hover.png');
+}
+.google-hover {
+    background-image: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/google-hover.png');
+}
