@@ -3,6 +3,7 @@ body {
 	background-color: #F5F5F5;
 	opacity: 20%;
 	margin: 0;
+
 }
 
 #fb-root {
@@ -15,6 +16,7 @@ body {
 	position: absolute;
 	top:24px;
 	left: 600px;
+
 }
 
 #logoCanvas {
@@ -35,6 +37,7 @@ body {
 	position: absolute;
 	top: 24px;
 	left: 45px;
+	
 }
 
 #content {
@@ -64,6 +67,7 @@ body {
 }
 
 .button {
+
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -97,13 +101,21 @@ body {
 	text-decoration:none;
 	text-align:center;
 	text-shadow:1px 1px 0px #ffffff;
+
 }
+
 .button:hover {
+
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
 	background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
 	background-color:#e9e9e9;
-}.button:active {
+
+}
+
+.button:active {
 	position:relative;
 	top:1px;
+
+}
 
