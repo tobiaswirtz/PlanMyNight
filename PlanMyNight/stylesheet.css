@@ -153,13 +153,13 @@ body {
 }
 
 .twitter-hover {
-    background-image: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/twitter-hover.png');
+    background-image: url('./PlanMyNight/twitter-hover.png');
 }
 .facebook-hover {
-    background-image: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/facebook-hover.png');
+    background-image: url('./PlanMyNight/facebook-hover.png');
 }
 .google-hover {
-    background-image: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/google-hover.png');
+    background-image: url('./PlanMyNight/google-hover.png');
 }
 
 a { text-decoration : none; color : #ffffff; }
