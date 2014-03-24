@@ -85,9 +85,9 @@ body {
 	background-color: #FF3030;
 	overflow-x:hidden;
 	overflow-y:hidden;
-	height: 3.5em;
+	height: 4.5em;
 	bottom: 0;
-
+	vertical-align:baseline;
 
 }
 
@@ -161,3 +161,5 @@ body {
 .google-hover {
     background-image: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/google-hover.png');
 }
+
+a { text-decoration : none; color : #ffffff; }
