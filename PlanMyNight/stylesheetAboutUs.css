@@ -18,14 +18,14 @@ body {
 	left: 600px;
 }
 
-#logoCanvas {	/*div that is responsible for the red, browser-wide bar at the top of the page*/
+#logoCanvas {	
 
-	position: static;
+	position: fixed;
 	text-align: center;
 	width: 100%; 
 	overflow-x: hidden;
-	overflow-y:hidden;
 	height: 4.5em;
+	top:0;
 
 }
 
@@ -48,33 +48,41 @@ body {
 
 #separator {
 
-	margin-top: 10px;
-	position: static;
+	margin-top: -135px;
+	position: fixed;
 	text-align: center;
 	width: 100%; 
 	overflow-x: hidden;
-	overflow-y:hidden;
 	height: 3px;
 	background-color: #FF3030;
 
 }
 
-#content {	/*anything between the two red bars div*/
+#content {	/*anything between the two red bars divs*/
 
-	width: 100%;
+	width: 101%;
+	height:1000px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 14em;
 	text-align: center;
 	font-family: WebsiteFont;
 	line-height: 130%;
-	z-index: -1;
+	overflow: scroll;
+	top: 0;
+	bottom:0;
+	position:relative;
+
 
 }
 
 #contentInner {
 
-	
+	position:fixed;
+	overflow: auto;
+	height:1000px;
+	top: 0;
+	bottom:0;
 }
 
 #footer {		/*lower red bar div*/
@@ -84,7 +92,6 @@ body {
 	color: white;
 	background-color: #FF3030;
 	overflow-x:hidden;
-	overflow-y:hidden;
 	height: 4.5em;
 	bottom: 0;
 	vertical-align:baseline;
@@ -162,6 +169,60 @@ body {
     background-image: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/google-hover.png');
 }
 
+#circularTobias {
+	width: 150px;
+	height: 150px;
+	border-radius: 75px;
+	-webkit-border-radius: 75px;
+	-moz-border-radius: 75px;
+	background: url('C:/Users/tobia_000/Documents/GitHub/PlanMyNight/PlanMyNight/Tobias.jpg') no-repeat;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+
+	position: fixed;
+	left: 35%;
+	top: 30%;
+	}
+
+#TobiasTitle {
+
+	line-height:60%;
+	position:fixed;
+	left:45%;
+	top:33%;
+	text-align:left;
+}
+
+#TobiasBio {
+
+	position:fixed;
+	left:35%;
+	top:47%;
+	width:700px;
+
+}
+
+
+#innerSeparator {
+
+
+	
+	position: fixed;
+	text-align: center;
+	width: 700px; 
+	overflow-x: hidden;
+	overflow-y:hidden;
+	height: 3px;
+	background-color: #FF3030;
+	margin:0 auto;
+	top:58%;
+	left:35%;
+
+
+}
+
+
 #circularAlex {
 	width: 150px;
 	height: 150px;
@@ -175,7 +236,7 @@ body {
 
 	position: fixed;
 	left: 35%;
-	top: 30%;
+	top: 60%;
 	}
 
 #AlexTitle {
@@ -183,7 +244,7 @@ body {
 	line-height:60%;
 	position: fixed;
 	left:45%;
-	top:33%;
+	top:63%;
 	text-align:left;
 
 
@@ -193,7 +254,8 @@ body {
 
 	position: fixed;
 	left: 35%;
-	top: 45%;
+	top: 77%;
+	width:700px;
 
 }
 a { text-decoration : none; color : #ffffff; }
