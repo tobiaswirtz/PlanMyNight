@@ -1,0 +1,818 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="font.css">
+
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=432114100254749"></script>
+
+
+</head>
+
+<title> Yatcher </title>
+
+<body>
+
+<div id="fb-root"></div>
+<script> //Facebook login process
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=432114100254749";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div id = "logoCanvas">  <!--Top Red Bar Div-->
+	<div id = "logo">	<!--Logo div-->
+			<a href="index.html"><img src="LOGORED.png"></a>
+	</div>
+	<div class="google-hover social-slide"></div>
+	<div class="twitter-hover social-slide"></div>
+	<div class="facebook-hover social-slide"></div>
+	<font size = "12"><p class="Walkway_SemiBold"></p></font size>
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div> <!--Synthesizing facebook login div-->
+</div>
+
+<div id = "separator"> 
+
+</div>
+
+<div id = "content">	<!--"Real Body" div-->
+
+	<script>
+
+		var maxNumberOfActivityQ = 7; //actually max number + 1 because we made the while loops go to maxnumber not max number plus 1
+		var numberOfPersonalityQ = 5;
+		var numberOfInterestQ = 4;
+		var activityIndex = 0;
+		var isActivityIndexSet = false;
+
+		var userAnswers = [];
+		var personality = [];
+		var interest = [];
+		var activity_path = [];
+
+		var interestsQuestions = ["Favorite music?","Favorite subject in school?","Arts or sports?","How would you describe your friends?"];
+		var personalityQuestion = "Which of the following words describes you best?";
+
+		var choleric = ["analytical","strategic","ambitious","strong-willed","practical","extraverted","impulsive","energetic", "passionate", "task-oriented", "leader"];
+		var melancholic = ["serious", "thoughtful", "introverted", "cautious", "reserved", "depressed"];
+		var phlegmatic = ["reasonable", "calm", "patient", "tolerant", "peaceful", "private", "principaled"];
+		var sanguine = ["playful", "lively", "sociable", "talkative", "optimistic", "creative", "fickle"];
+
+
+		function addNumberToUserAnswers(number) {
+
+			userAnswers.push(number);
+			changeLabelsAndButtons();
+
+		}
+
+		function changeLabelsAndButtons() {
+
+			var numberOfAnsweredQuestions = userAnswers.length;
+
+			switch(numberOfAnsweredQuestions){ 
+				case 1:
+					//ADD THIS TO ALL CASES: make all the answers visible again
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//ADD IF STATEMENT FOR PREVIOUS QUESTION AND GIVE APPROPTIATE FOLLOW UP QUESTIONS
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = "Do you want to move?";
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " Yes";
+					document.getElementById('Answer2Label').innerHTML = " No";
+					document.getElementById('Answer3Label').innerHTML = " ";
+					document.getElementById('Answer4Label').innerHTML = " ";
+
+					document.getElementById('Answer3').style.visibility = 'hidden';
+					document.getElementById('Answer4').style.visibility = 'hidden';
+
+					//hide buttons you dont need - look at default case at bottom to see how.
+
+					//we'll add value of activity path after, once all the questions are answered
+					//if you get to the end of a branch (ie activty path complete/set) then do a while loop and make it add 0's to user answers until userAnswers=maxnumberofactivityQ
+					numberOfAnsweredQuestions = userAnswers.length;
+
+				break;
+
+				case 2:
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//ADD IF STATEMENT FOR PREVIOUS QUESTION AND GIVE APPROPTIATE FOLLOW UP QUESTIONS
+					//set question
+					
+					if (userAnswers[1] == 1) {
+					document.getElementById('QuestionLabel').innerHTML = "Do you want to do something athletic?";
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " Yes";
+					document.getElementById('Answer2Label').innerHTML = " No";
+					document.getElementById('Answer3Label').innerHTML = " ";
+					document.getElementById('Answer4Label').innerHTML = " ";
+
+					document.getElementById('Answer3').style.visibility = 'hidden';
+					document.getElementById('Answer4').style.visibility = 'hidden';
+					}
+
+					else if (userAnswers[1] == 2) {
+
+					document.getElementById('QuestionLabel').innerHTML = "Do you want to eat?";
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " Yes";
+					document.getElementById('Answer2Label').innerHTML = " No";
+					document.getElementById('Answer3Label').innerHTML = " ";
+					document.getElementById('Answer4Label').innerHTML = " ";
+
+					document.getElementById('Answer3').style.visibility = 'hidden';
+					document.getElementById('Answer4').style.visibility = 'hidden';
+
+					}
+					//hide buttons you dont need - look at default case at bottom to see how.
+
+					//we'll add value of activity path after, once all the questions are answered
+					//if you get to the end of a branch (ie activty path complete/set) then do a while loop and make it add 0's to user answers until userAnswers=maxnumberofactivityQ
+
+					numberOfAnsweredQuestions = userAnswers.length;
+
+				break;
+
+				case 3:
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//ADD IF STATEMENT FOR PREVIOUS QUESTION AND GIVE APPROPTIATE FOLLOW UP QUESTIONS
+					//set question
+					
+					if (userAnswers[1] == 1) {
+						if (userAnswers[2] == 1){ 
+							document.getElementById('QuestionLabel').innerHTML = "Why do you want to do it?";
+
+					//set answers
+							document.getElementById('Answer1Label').innerHTML = " Fun";
+							document.getElementById('Answer2Label').innerHTML = " Improvement";
+							document.getElementById('Answer3Label').innerHTML = " ";
+							document.getElementById('Answer4Label').innerHTML = " ";
+
+							document.getElementById('Answer3').style.visibility = 'hidden';
+							document.getElementById('Answer4').style.visibility = 'hidden';
+						}
+
+					}
+
+					else if (userAnswers[1] == 2) {
+
+						if (userAnswers[2]==1){
+
+							document.getElementById('QuestionLabel').innerHTML = "Do you want a sit-down meal??";
+
+					//set answers
+							document.getElementById('Answer1Label').innerHTML = " Yes";
+							document.getElementById('Answer2Label').innerHTML = " No";
+							document.getElementById('Answer3Label').innerHTML = " ";
+							document.getElementById('Answer4Label').innerHTML = " ";
+
+							document.getElementById('Answer3').style.visibility = 'hidden';
+							document.getElementById('Answer4').style.visibility = 'hidden';
+						}
+					}
+
+					if (userAnswers[2] == 2) {
+
+							document.getElementById('QuestionLabel').innerHTML = "Do you want to do drink?";
+
+					//set answers
+							document.getElementById('Answer1Label').innerHTML = " Yes";
+							document.getElementById('Answer2Label').innerHTML = " No";
+							document.getElementById('Answer3Label').innerHTML = " ";
+							document.getElementById('Answer4Label').innerHTML = " ";
+
+							document.getElementById('Answer3').style.visibility = 'hidden';
+							document.getElementById('Answer4').style.visibility = 'hidden';
+						}
+
+					numberOfAnsweredQuestions = userAnswers.length;
+				break;
+
+				case 4:
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+
+					if (userAnswers[1]==1){
+
+						if (userAnswers[2]==1){
+							document.getElementById('QuestionLabel').innerHTML = "Individual or Team Sport?";
+
+					//set answers
+							document.getElementById('Answer1Label').innerHTML = " Individual";
+							document.getElementById('Answer2Label').innerHTML = " Team Sport";
+							document.getElementById('Answer3Label').innerHTML = " ";
+							document.getElementById('Answer4Label').innerHTML = " ";
+
+							document.getElementById('Answer3').style.visibility = 'hidden';
+							document.getElementById('Answer4').style.visibility = 'hidden';
+
+						}
+						else if (userAnswers[2]==2){
+
+							if(userAnswers[3]==1){
+								while(userAnswers.length<=maxNumberOfActivityQ) {
+									userAnswers.push(0);
+								}
+								changeLabelsAndButtons();
+							}
+							else if (userAnswers[3]==2){
+
+								document.getElementById('QuestionLabel').innerHTML = "Do you want to volunteer?";
+
+					//set answers
+								document.getElementById('Answer1Label').innerHTML = " Yes";
+								document.getElementById('Answer2Label').innerHTML = " No";
+								document.getElementById('Answer3Label').innerHTML = " ";
+								document.getElementById('Answer4Label').innerHTML = " ";
+
+								document.getElementById('Answer3').style.visibility = 'hidden';
+								document.getElementById('Answer4').style.visibility = 'hidden';
+							}
+						}
+					}
+					else if (userAnswers[1]==2){
+
+						if (userAnswers[2]==1){
+							while(userAnswers.length<=maxNumberOfActivityQ){
+								userAnswers.push(0);
+							}
+							changeLabelsAndButtons();
+						}
+						else if (userAnswers[2]==2){
+							if (userAnswers[3]==1){
+								while(userAnswers.length<=maxNumberOfActivityQ){
+								userAnswers.push(0);
+								}
+								changeLabelsAndButtons();
+							}
+							else if (userAnswers[3]==2){
+
+								document.getElementById('QuestionLabel').innerHTML = "Do you want to do something cultural?";
+
+					//set answers
+								document.getElementById('Answer1Label').innerHTML = " Yes";
+								document.getElementById('Answer2Label').innerHTML = " No";
+								document.getElementById('Answer3Label').innerHTML = " ";
+								document.getElementById('Answer4Label').innerHTML = " ";
+
+								document.getElementById('Answer3').style.visibility = 'hidden';
+								document.getElementById('Answer4').style.visibility = 'hidden';
+
+							}
+						}
+					}
+
+					numberOfAnsweredQuestions = userAnswers.length;
+
+				break;
+
+				case 5:
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+
+					if (userAnswers[1]==1){
+						if (userAnswers[2]==1) {
+							if (userAnswers[4]==1) {
+								document.getElementById('QuestionLabel').innerHTML = "Pick one of the following:";
+
+					//set answers
+								document.getElementById('Answer1Label').innerHTML = " Fitness";
+								document.getElementById('Answer2Label').innerHTML = " Target";
+								document.getElementById('Answer3Label').innerHTML = " Net/Wall";
+								document.getElementById('Answer4Label').innerHTML = " Other";
+
+							}
+							else if (userAnswers[4]==2){
+								document.getElementById('QuestionLabel').innerHTML = "Pick one of the following:";
+
+					//set answers
+								document.getElementById('Answer1Label').innerHTML = " Target";
+								document.getElementById('Answer2Label').innerHTML = " Game";
+								document.getElementById('Answer3Label').innerHTML = " Striking";
+								document.getElementById('Answer4Label').innerHTML = " Territory";
+							}
+
+						}
+						else if (userAnswers[2]==2){
+
+							if (userAnswers[3]==2) {
+								if (userAnswers[4]==1){
+									while(userAnswers.length <= maxNumberOfActivityQ){
+										userAnswers.push(0);
+									}
+									changeLabelsAndButtons();
+								}
+								else if (userAnswers[4]==2){
+									document.getElementById('QuestionLabel').innerHTML = "Do you want to be inside?";
+
+					//set answers
+									document.getElementById('Answer1Label').innerHTML = " Yes";
+									document.getElementById('Answer2Label').innerHTML = " No";
+									document.getElementById('Answer3Label').innerHTML = " ";
+									document.getElementById('Answer4Label').innerHTML = " ";
+
+									document.getElementById('Answer3').style.visibility = 'hidden';
+									document.getElementById('Answer4').style.visibility = 'hidden';
+								}
+							}
+						}
+					}
+					else if (userAnswers[1]==2){
+						if (userAnswers[2]==2){
+							if (userAnswers[3]==2) {
+								if (userAnswers[4]==1) {
+									document.getElementById('QuestionLabel').innerHTML = "What kind of culture do you want to experience?";
+
+					//set answers
+									document.getElementById('Answer1Label').innerHTML = " Ancient";
+									document.getElementById('Answer2Label').innerHTML = " Modern";
+									document.getElementById('Answer3Label').innerHTML = " ";
+									document.getElementById('Answer4Label').innerHTML = " ";
+
+									document.getElementById('Answer3').style.visibility = 'hidden';
+									document.getElementById('Answer4').style.visibility = 'hidden';
+								}
+								else if (userAnswers[4]==2){
+									document.getElementById('QuestionLabel').innerHTML = "Do you want to watch something?";
+
+					//set answers
+									document.getElementById('Answer1Label').innerHTML = " Yes";
+									document.getElementById('Answer2Label').innerHTML = " No";
+									document.getElementById('Answer3Label').innerHTML = " ";
+									document.getElementById('Answer4Label').innerHTML = " ";
+
+									document.getElementById('Answer3').style.visibility = 'hidden';
+									document.getElementById('Answer4').style.visibility = 'hidden';
+								}
+							}
+						}
+					}
+
+					numberOfAnsweredQuestions = userAnswers.length;
+
+				break;
+
+				case 6:
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+
+					if (userAnswers[1]==1){
+						if (userAnswers[2]==1) {
+							if (userAnswers[4]==1) {
+								if (userAnswers[5]==1 || userAnswers[5]==2 || userAnswers[5]==3) {
+									while(userAnswers.length<=maxNumberOfActivityQ){
+										userAnswers.push(0);
+									}
+									changeLabelsAndButtons();
+								}
+								else if (userAnswers[5]==4) {
+									document.getElementById('QuestionLabel').innerHTML = "Pick one of the following:";
+
+					
+									document.getElementById('Answer1Label').innerHTML = " Rhythmic";
+									document.getElementById('Answer2Label').innerHTML = " Combat";
+									document.getElementById('Answer3Label').innerHTML = " Water";
+									document.getElementById('Answer4Label').innerHTML = " Land";
+
+								}
+							}
+							else if (userAnswers[4]==2){
+
+								while(userAnswers.length<=maxNumberOfActivityQ){
+									userAnswers.push(0);
+								}
+								changeLabelsAndButtons();
+
+							}
+						}
+						else if (userAnswers[2]==2){
+							if (userAnswers[3]==2){
+								if(userAnswers[4]==2){
+									if(userAnswers[5]==1){
+										document.getElementById('QuestionLabel').innerHTML = "Do you want to play a game?";
+
+					//set answers
+										document.getElementById('Answer1Label').innerHTML = " Yes";
+										document.getElementById('Answer2Label').innerHTML = " No";
+										document.getElementById('Answer3Label').innerHTML = " ";
+										document.getElementById('Answer4Label').innerHTML = " ";
+
+										document.getElementById('Answer3').style.visibility = 'hidden';
+										document.getElementById('Answer4').style.visibility = 'hidden';
+									}
+									else if (userAnswers[5]==2){
+										while(userAnswers.length<=maxNumberOfActivityQ){
+											userAnswers.push(0);
+										}
+										changeLabelsAndButtons();
+									}
+								}
+							}
+						}
+					}
+					else if (userAnswers[1]==2){
+						if(userAnswers[2]==2){
+							if(userAnswers[3]==2){
+								if(userAnswers[4]==1){
+									if(userAnswers[5]==1){
+										document.getElementById('QuestionLabel').innerHTML = "Do you want to have a discussion?";
+
+					//set answers
+										document.getElementById('Answer1Label').innerHTML = " Yes";
+										document.getElementById('Answer2Label').innerHTML = " No";
+										document.getElementById('Answer3Label').innerHTML = " ";
+										document.getElementById('Answer4Label').innerHTML = " ";
+
+										document.getElementById('Answer3').style.visibility = 'hidden';
+										document.getElementById('Answer4').style.visibility = 'hidden';
+									}
+									else if (userAnswers[5]==2){
+										while(userAnswers.length<=maxNumberOfActivityQ){
+											userAnswers.push(0);
+										}
+										changeLabelsAndButtons();
+									}
+								}
+								else if (userAnswers[4]==2){
+									while(userAnswers.length<=maxNumberOfActivityQ){
+										userAnswers.push(0);
+									}
+									changeLabelsAndButtons();
+								}
+							} 
+						}
+					}
+
+					numberOfAnsweredQuestions = userAnswers.length;
+
+				break;
+
+				case 7:
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+
+					while (userAnswers.length<=maxNumberOfActivityQ){
+						userAnswers.push(0);
+					}
+					changeLabelsAndButtons();
+
+					numberOfAnsweredQuestions = userAnswers.length;
+
+				break;
+
+				case (maxNumberOfActivityQ+1): //not +0 because first question is age question
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//ADD IF STATEMENT FOR PREVIOUS QUESTION AND GIVE APPROPTIATE FOLLOW UP QUESTIONS
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = "Your activity has been determined," + "</br></br>" + "Would you like us to match you up with friends?";
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " Yes";
+					document.getElementById('Answer2Label').innerHTML = " No";
+					document.getElementById('Answer3Label').innerHTML = " ";
+					document.getElementById('Answer4Label').innerHTML = " ";
+
+					document.getElementById('Answer3').style.visibility = 'hidden';
+					document.getElementById('Answer4').style.visibility = 'hidden';
+
+					//we'll add value of activity path after, once all the questions are answered
+					//if you get to the end of a branch (ie activty path complete/set) then do a while loop and make it add 0's to user answers until userAnswers=maxnumberofactivityQ
+
+					numberOfAnsweredQuestions = userAnswers.length;
+
+				break;
+
+				case (maxNumberOfActivityQ+2):
+					
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = personalityQuestion;
+
+					//set answers
+					var choleric_item = choleric[Math.floor(Math.random()*choleric.length)];
+					var melancholic_item = melancholic[Math.floor(Math.random()*melancholic.length)];
+					var phlegmatic_item = phlegmatic[Math.floor(Math.random()*phlegmatic.length)];
+					var sanguine_item = sanguine[Math.floor(Math.random()*sanguine.length)];
+
+					choleric.splice(choleric.indexOf(choleric_item),1);
+					melancholic.splice(melancholic.indexOf(melancholic_item),1);
+					phlegmatic.splice(phlegmatic.indexOf(phlegmatic_item),1);
+					sanguine.splice(sanguine.indexOf(sanguine_item),1);
+
+					document.getElementById('Answer1Label').innerHTML = " " + choleric_item;
+					document.getElementById('Answer2Label').innerHTML = " " + melancholic_item;
+					document.getElementById('Answer3Label').innerHTML = " " + phlegmatic_item;
+					document.getElementById('Answer4Label').innerHTML = " " + sanguine_item;
+
+					numberOfAnsweredQuestions = userAnswers.length;
+
+					if(userAnswers[(maxNumberOfActivityQ+1)]==2){
+						
+						while (userAnswers.length<=((maxNumberOfActivityQ+2)+numberOfPersonalityQ+numberOfInterestQ)){
+							userAnswers.push(0);
+						}
+						changeLabelsAndButtons();
+					}
+
+				break;
+
+				case (maxNumberOfActivityQ+3):
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = personalityQuestion;
+
+					//set answers
+					var choleric_item = choleric[Math.floor(Math.random()*choleric.length)];
+					var melancholic_item = melancholic[Math.floor(Math.random()*melancholic.length)];
+					var phlegmatic_item = phlegmatic[Math.floor(Math.random()*phlegmatic.length)];
+					var sanguine_item = sanguine[Math.floor(Math.random()*sanguine.length)];
+
+					choleric.splice(choleric.indexOf(choleric_item),1);
+					melancholic.splice(melancholic.indexOf(melancholic_item),1);
+					phlegmatic.splice(phlegmatic.indexOf(phlegmatic_item),1);
+					sanguine.splice(sanguine.indexOf(sanguine_item),1);
+
+					document.getElementById('Answer1Label').innerHTML = " " + choleric_item;
+					document.getElementById('Answer2Label').innerHTML = " " + melancholic_item;
+					document.getElementById('Answer3Label').innerHTML = " " + phlegmatic_item;
+					document.getElementById('Answer4Label').innerHTML = " " + sanguine_item;
+
+					numberOfAnsweredQuestions = userAnswers.length;
+				break;
+
+				case (maxNumberOfActivityQ+4):
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = personalityQuestion;
+
+					//set answers
+					var choleric_item = choleric[Math.floor(Math.random()*choleric.length)];
+					var melancholic_item = melancholic[Math.floor(Math.random()*melancholic.length)];
+					var phlegmatic_item = phlegmatic[Math.floor(Math.random()*phlegmatic.length)];
+					var sanguine_item = sanguine[Math.floor(Math.random()*sanguine.length)];
+
+					choleric.splice(choleric.indexOf(choleric_item),1);
+					melancholic.splice(melancholic.indexOf(melancholic_item),1);
+					phlegmatic.splice(phlegmatic.indexOf(phlegmatic_item),1);
+					sanguine.splice(sanguine.indexOf(sanguine_item),1);
+
+					document.getElementById('Answer1Label').innerHTML = " " + choleric_item;
+					document.getElementById('Answer2Label').innerHTML = " " + melancholic_item;
+					document.getElementById('Answer3Label').innerHTML = " " + phlegmatic_item;
+					document.getElementById('Answer4Label').innerHTML = " " + sanguine_item;
+
+					numberOfAnsweredQuestions = userAnswers.length;
+				break;
+
+				case (maxNumberOfActivityQ+5):
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = personalityQuestion;
+
+					//set answers
+					var choleric_item = choleric[Math.floor(Math.random()*choleric.length)];
+					var melancholic_item = melancholic[Math.floor(Math.random()*melancholic.length)];
+					var phlegmatic_item = phlegmatic[Math.floor(Math.random()*phlegmatic.length)];
+					var sanguine_item = sanguine[Math.floor(Math.random()*sanguine.length)];
+
+					choleric.splice(choleric.indexOf(choleric_item),1);
+					melancholic.splice(melancholic.indexOf(melancholic_item),1);
+					phlegmatic.splice(phlegmatic.indexOf(phlegmatic_item),1);
+					sanguine.splice(sanguine.indexOf(sanguine_item),1);
+
+					document.getElementById('Answer1Label').innerHTML = " " + choleric_item;
+					document.getElementById('Answer2Label').innerHTML = " " + melancholic_item;
+					document.getElementById('Answer3Label').innerHTML = " " + phlegmatic_item;
+					document.getElementById('Answer4Label').innerHTML = " " + sanguine_item;
+
+					numberOfAnsweredQuestions = userAnswers.length;
+				break;
+
+				case (maxNumberOfActivityQ+6):
+
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = personalityQuestion;
+
+					//set answers
+					var choleric_item = choleric[Math.floor(Math.random()*choleric.length)];
+					var melancholic_item = melancholic[Math.floor(Math.random()*melancholic.length)];
+					var phlegmatic_item = phlegmatic[Math.floor(Math.random()*phlegmatic.length)];
+					var sanguine_item = sanguine[Math.floor(Math.random()*sanguine.length)];
+
+					choleric.splice(choleric.indexOf(choleric_item),1);
+					melancholic.splice(melancholic.indexOf(melancholic_item),1);
+					phlegmatic.splice(phlegmatic.indexOf(phlegmatic_item),1);
+					sanguine.splice(sanguine.indexOf(sanguine_item),1);
+
+					document.getElementById('Answer1Label').innerHTML = " " + choleric_item;
+					document.getElementById('Answer2Label').innerHTML = " " + melancholic_item;
+					document.getElementById('Answer3Label').innerHTML = " " + phlegmatic_item;
+					document.getElementById('Answer4Label').innerHTML = " " + sanguine_item;
+
+					numberOfAnsweredQuestions = userAnswers.length;
+
+				break;
+
+				default:
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = "DONE";
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " ";
+					document.getElementById('Answer2Label').innerHTML = " ";
+					document.getElementById('Answer3Label').innerHTML = " ";
+					document.getElementById('Answer4Label').innerHTML = " ";
+
+					//hide buttons
+					document.getElementById('Answer1').style.visibility = 'hidden'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'hidden';
+					document.getElementById('Answer3').style.visibility = 'hidden';
+					document.getElementById('Answer4').style.visibility = 'hidden';
+
+					//create value for personality
+					var start_position = 1;
+
+					var cholericAnswers = 0;
+					var melancholicAnswers = 0;
+					var phlegmaticAnswers = 0;
+					var sanguineAnswers = 0;
+
+					var userAnswersClone = userAnswers.slice(0);
+					var personalityAnswers = userAnswersClone.splice(start_position, start_position + numberOfPersonalityQ);
+
+					for(var i in personalityAnswers){
+						if (personalityAnswers[i]==1) {cholericAnswers++};
+						if (personalityAnswers[i]==2) {melancholicAnswers++};
+						if (personalityAnswers[i]==3) {phlegmaticAnswers++};
+						if (personalityAnswers[i]==4) {sanguineAnswers++};
+					}
+					personality = [(cholericAnswers/numberOfPersonalityQ), (melancholicAnswers/numberOfPersonalityQ), (phlegmaticAnswers/numberOfPersonalityQ), (sanguineAnswers/numberOfPersonalityQ)];
+
+				break;
+			}
+
+
+		}
+
+
+
+	</script>
+
+	<font size = "12"><p class="Walkway_SemiBold"><label id="QuestionLabel">How old are you?</label> </br></br></br>
+	<input type='radio' name='Answers' id='Answer1' value='18-21' onclick="addNumberToUserAnswers(1)"><label id="Answer1Label"> 14-17</label></br></br>
+	<input type='radio' name='Answers' id='Answer2' value='18-21' onclick="addNumberToUserAnswers(2)"><label id="Answer2Label"> 18-20</label></br></br>
+	<input type='radio' name='Answers' id='Answer3' value='18-21' onclick="addNumberToUserAnswers(3)"><label id="Answer3Label"> 21-29</label></br></br>
+	<input type='radio' name='Answers' id='Answer4' value='18-21' onclick="addNumberToUserAnswers(4)"><label id="Answer4Label"> 30+</label></br></br>
+
+	</p></font size>
+
+</div>
+<div id="footer">
+	<center><p class="Walkway_SemiBold">Copyright MopTop Labs, 2014</p></center>
+</div>	
+
+</body>
+
+</html>
