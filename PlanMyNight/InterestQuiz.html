@@ -51,7 +51,7 @@
 
 		var userAnswers = [];
 		var personality = [];
-		var interest = [];
+		var interests = [];
 		var activity_path = [];
 
 		var interestsQuestions = ["Favorite music?","Favorite subject in school?","Arts or sports?","How would you describe your friends?"];
@@ -747,6 +747,114 @@
 					numberOfAnsweredQuestions = userAnswers.length;
 
 				break;
+				
+				case (1+ maxNumberOfActivityQ + 1 + numberOfPersonalityQ):
+				
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = interestsQuestions[0];
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " Hip Hop, Rap, R&B, Metal";
+					document.getElementById('Answer2Label').innerHTML = " Indie, Alternative, Classic Rock, Oldies, Blues, Jazz";
+					document.getElementById('Answer3Label').innerHTML = " Dubstep, Electronic, Dance, House";
+					document.getElementById('Answer4Label').innerHTML = " Classical, Easy listening, Symphony, Opera";
+
+					numberOfAnsweredQuestions = userAnswers.length;
+					
+				break;
+				
+				case (1+ maxNumberOfActivityQ + 1 + numberOfPersonalityQ + 1):
+				
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = interestsQuestions[1];
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " Science";
+					document.getElementById('Answer2Label').innerHTML = " Humanities";
+					document.getElementById('Answer3Label').innerHTML = " Neither";
+					document.getElementById('Answer4Label').innerHTML = " ";
+					
+					document.getElementById('Answer4').style.visibility = 'hidden';
+
+					numberOfAnsweredQuestions = userAnswers.length;
+					
+				break;
+				
+				case (1+ maxNumberOfActivityQ + 1 + numberOfPersonalityQ + 2):
+				
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = interestsQuestions[2];
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " Arts";
+					document.getElementById('Answer2Label').innerHTML = " Sports";
+					document.getElementById('Answer3Label').innerHTML = " Both Equally";
+					document.getElementById('Answer4Label').innerHTML = " ";
+					
+					document.getElementById('Answer4').style.visibility = 'hidden';
+
+					numberOfAnsweredQuestions = userAnswers.length;
+					
+				break;
+				
+				case (1+ maxNumberOfActivityQ + 1 + numberOfPersonalityQ + 3):
+				
+					document.getElementById('Answer1').style.visibility = 'visible'; //'visible' to show it
+					document.getElementById('Answer2').style.visibility = 'visible';
+					document.getElementById('Answer3').style.visibility = 'visible';
+					document.getElementById('Answer4').style.visibility = 'visible';
+
+					//uncheck radio
+					Answer1.checked = false;
+					Answer2.checked = false;
+					Answer3.checked = false;
+					Answer4.checked = false;
+					
+					//set question
+					document.getElementById('QuestionLabel').innerHTML = interestsQuestions[3];
+
+					//set answers
+					document.getElementById('Answer1Label').innerHTML = " Intellectual";
+					document.getElementById('Answer2Label').innerHTML = " Geeky";
+					document.getElementById('Answer3Label').innerHTML = " Athletic";
+					document.getElementById('Answer4Label').innerHTML = " Artsy/Musical";
+
+					numberOfAnsweredQuestions = userAnswers.length;
+					
+				break;
 
 				default:
 
@@ -770,26 +878,42 @@
 					document.getElementById('Answer2').style.visibility = 'hidden';
 					document.getElementById('Answer3').style.visibility = 'hidden';
 					document.getElementById('Answer4').style.visibility = 'hidden';
-
-					//create value for personality
+					
+					//set activity path
 					var start_position = 1;
-
-					var cholericAnswers = 0;
-					var melancholicAnswers = 0;
-					var phlegmaticAnswers = 0;
-					var sanguineAnswers = 0;
-
 					var userAnswersClone = userAnswers.slice(0);
-					var personalityAnswers = userAnswersClone.splice(start_position, start_position + numberOfPersonalityQ);
+					
+					activity_path = userAnswersClone.splice(start_position, maxNumberOfActivityQ);
+					
+					if(userAnswers[(maxNumberOfActivityQ+1)]==1){
+						
+						//create value for personality
+						start_position = maxNumberOfActivityQ + 2;
 
-					for(var i in personalityAnswers){
-						if (personalityAnswers[i]==1) {cholericAnswers++};
-						if (personalityAnswers[i]==2) {melancholicAnswers++};
-						if (personalityAnswers[i]==3) {phlegmaticAnswers++};
-						if (personalityAnswers[i]==4) {sanguineAnswers++};
+						var cholericAnswers = 0;
+						var melancholicAnswers = 0;
+						var phlegmaticAnswers = 0;
+						var sanguineAnswers = 0;
+
+						userAnswersClone = userAnswers.slice(0);
+						var personalityAnswers = userAnswersClone.splice(start_position, numberOfPersonalityQ);
+
+						for(var i in personalityAnswers){
+							if (personalityAnswers[i]==1) {cholericAnswers++};
+							if (personalityAnswers[i]==2) {melancholicAnswers++};
+							if (personalityAnswers[i]==3) {phlegmaticAnswers++};
+							if (personalityAnswers[i]==4) {sanguineAnswers++};
+						}
+						personality = [(cholericAnswers/numberOfPersonalityQ), (melancholicAnswers/numberOfPersonalityQ), (phlegmaticAnswers/numberOfPersonalityQ), (sanguineAnswers/numberOfPersonalityQ)];
+					
+						//create value for interests
+						start_position = maxNumberOfActivityQ + 2 + numberOfPersonalityQ;
+					
+						userAnswersClone = userAnswers.slice(0);
+						interests = userAnswersClone.splice(start_position, numberOfInterestQ);
+					
 					}
-					personality = [(cholericAnswers/numberOfPersonalityQ), (melancholicAnswers/numberOfPersonalityQ), (phlegmaticAnswers/numberOfPersonalityQ), (sanguineAnswers/numberOfPersonalityQ)];
-
+										
 				break;
 			}
 
