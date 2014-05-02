@@ -41,37 +41,6 @@
 
 <div id = "content">	<!--"Real Body" div-->
 
-	<script>	//Animation Script
-
-		$(document).ready(function(){
-   			animateDiv1();
-    
-		});
-
-		function makeNewPositionFor1(){
-    
-    	// Get viewport dimensions (remove the dimension of the div)
-    	var h = $(window).height() - 50;
-    	var w = $(window).width() - 50;
-    
-    	var nh = Math.floor(Math.random() * h);
-    	var nw = Math.floor(Math.random() * w);
-    
-    	return [nh,nw];    
-    
-		}
-
-		function animateDiv1(){
-   			var newq = makeNewPosition();
-    		$('.a').animate({ top: newq[0], left: newq[1] }, function(){
-      			animateDiv1();        
-    		});
-    
-		};
-
-
-
-	</script>
 
 	<script>
 
@@ -956,11 +925,11 @@
 
 	</script>
 
-	<font size = "12"><p class="Walkway_SemiBold"><label id="QuestionLabel">How old are you?</label> </br></br></br>
-	<input type='radio' class="a" name='Answers' id='Answer1' value='18-21' onclick="addNumberToUserAnswers(1)"><label class="a" id="Answer1Label"> 14-17</label></br></br>
-	<input type='radio' name='Answers' id='Answer2' value='18-21' onclick="addNumberToUserAnswers(2)"><label id="Answer2Label"> 18-20</label></br></br>
-	<input type='radio' name='Answers' id='Answer3' value='18-21' onclick="addNumberToUserAnswers(3)"><label id="Answer3Label"> 21-29</label></br></br>
-	<input type='radio' name='Answers' id='Answer4' value='18-21' onclick="addNumberToUserAnswers(4)"><label id="Answer4Label"> 30+</label></br></br>
+	<font size = "12"><p class="Walkway_SemiBold"><label id="QuestionLabel" class="animation">How old are you?</label> </br></br></br>
+	<input type='radio' class ="a, animation" name='Answers' id='Answer1' value='18-21' onclick="addNumberToUserAnswers(1)"><label class="a, animation" id="Answer1Label"> 14-17</label></br></br>
+	<input type='radio' class ="animation" name='Answers' id='Answer2' value='18-21' onclick="addNumberToUserAnswers(2)"><label id="Answer2Label" class ="animation"> 18-20</label></br></br>
+	<input type='radio' class ="animation" name='Answers' id='Answer3' value='18-21' onclick="addNumberToUserAnswers(3)"><label id="Answer3Label" class ="animation"> 21-29</label></br></br>
+	<input type='radio' class ="animation" name='Answers' id='Answer4' value='18-21' onclick="addNumberToUserAnswers(4)"><label id="Answer4Label" class ="animation"> 30+</label></br></br>
 
 	</p></font size>
 
